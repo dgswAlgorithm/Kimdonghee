@@ -1,52 +1,16 @@
 #include<stdio.h>
-#define MAX 100
-#define SWAP(a,b) temp = a; a = b; b = temp;
 int main()
 {
-	int arr[MAX] = { 0 };
-	int temp;
-	int n;
-	for (int i = 0;; i++) {
-		scanf("%d", &arr[i]);
-		if (arr[i] == 0) {
-			n = i;
-			break;
-		}
-	}
+	int arr[100] = { 0, -3, 5, -4, -2, 3, 1, 0 };
+	int n = 8;
 	for (int i = 0; i < n; i++) {
-		if (arr[i] % 2 == 0 && n != 1) {
-			if (i + 1 == n) {
-				if (arr[i] < arr[i - 1])SWAP(arr[i], arr[i - 1]);
-			}
-			else if (i - 1 == -1) {
-				if (arr[i] < arr[i + 1]) {
-					SWAP(arr[i], arr[i + 1]);
-					i++;
-				}
-			}
-			else {
-				if (arr[i] < arr[i + 1]) {
-					if (arr[i + 1] > arr[i - 1]) {
-						SWAP(arr[i + 1], arr[i]);
-						i++;
-					}
-					else {
-						SWAP(arr[i - 1], arr[i]);
-					}
-				}
-				else if (arr[i] < arr[i - 1]) {
-					if (arr[i + 1] > arr[i - 1]) {
-						SWAP(arr[i + 1], arr[i]);
-						i++;
-					}
-					else {
-						SWAP(arr[i - 1], arr[i]);
-					}
-				}
-			}
+		int sum1 = 0, sum2 = 0;
+		for (int j = 0; j < i; j++) {
+			sum1 += arr[j];
 		}
-	}
-	for (int i = 0; i < n; i++) {
-		printf("%d ", arr[i]);
+		for (int j = i + 1; j < n; j++) {
+			sum2 += arr[j];
+		}
+		if (sum1 == sum2)printf("%d ", i);
 	}
 }
